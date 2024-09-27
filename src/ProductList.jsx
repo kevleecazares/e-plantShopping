@@ -276,6 +276,9 @@ const ProductList = () => {
   const [addedToCart, setAddedToCart] = useState({});
 
   const cart = useSelector((state) => state.cart.items);
+  const total = cart.reduce((accumulator, item) => {
+    return accumulator + item.quantity;
+  }, 0);
 
   const handleCartClick = (e) => {
     e.preventDefault();
@@ -329,7 +332,7 @@ const ProductList = () => {
             {" "}
             <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
               <h1 className="cart">
-                {cart.length}
+                {total}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 256 256"
